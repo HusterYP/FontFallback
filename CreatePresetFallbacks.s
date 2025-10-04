@@ -83,7 +83,7 @@ LABEL_37:
         v20 = (__CFString *)CFArrayGetValueAtIndex(v15, v19);
         v21 = CFGetTypeID(v20);
         
-        // 如果当前项是字典类型（语言特定的字体配置）
+        // 如果当前项是字典类型，说明是按语言区分的预设字体
         if ( v21 == CFDictionaryGetTypeID() )
         {
           v22 = CFArrayGetCount(v12);
@@ -92,7 +92,7 @@ LABEL_37:
             v23 = v22;
             v24 = 0LL;
             
-            // 遍历语言数组，查找匹配的字体
+            // 遍历用户的语言列表，在字典中查找匹配的预设字体
             do
             {
               v25 = CFArrayGetValueAtIndex(v12, v24);
@@ -110,7 +110,7 @@ LABEL_37:
         }
         else
         {
-          // 如果当前项是字符串类型（直接字体名称）
+          // 如果是字符串类型，直接作为预设字体名
           
           // 处理表情符号字体的特殊情况
           if ( !(dyld_program_sdk_at_least(567463457243267071LL) & 1) )
